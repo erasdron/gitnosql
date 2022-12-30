@@ -21,4 +21,31 @@ class RoomController(val roomrepository: Roomrepository) {
 
     @DeleteMapping("api/room/delete/{id}")
     fun deleteRoom(@PathVariable id: String)=roomrepository.deleteRoom(id);
+
+    /*
+    @RequestMapping("/api/rooms")
+
+    class RoomController {
+        @Autowired private lateinit var roomService: RoomService
+
+        @GetMapping("api/room/all")
+       fun findAll(): List<Rooms> = roomService.findAll()
+
+       @GetMapping("/{id}")
+        fun findById(@PathVariable("id") id: String):
+                Room {
+            return roomService.findById(id)
+        }
+
+
+       @PostMapping
+        fun createRoom(@Valid @RequestBody request: RoomRequest) =roomService.create(request)
+
+
+        @DeleteMapping("/{id}")
+        fun deleteRoom(@PathVariable id: String)=roomService.deleteById(id);
+
+    */
+
+
 }
