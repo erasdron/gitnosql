@@ -12,6 +12,7 @@ object Mongoconnect {
         var mongoClient: MongoClient? = null
         try {
             mongoClient = MongoClients.create("mongodb://localhost")
+            inp(mongoClient)
         } catch (e: MongoException) {
             e.printStackTrace()
         } finally {
