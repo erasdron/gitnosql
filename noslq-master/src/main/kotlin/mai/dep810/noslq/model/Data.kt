@@ -10,11 +10,9 @@ class Data {
 
     data class Room(
         var room_id: String,
-        var name: String,
-        var neighbourhood: String,
         var type: String,
         var price: String,
-        var city: String,
+        var maximum_nights:String,
         var country: String
     )
 
@@ -36,7 +34,7 @@ class Data {
                     Data.Client(client_id, client_name)
                 }.toList()
         }
-    /*    fun readC(inputStream: InputStream): List<Data.Book>{
+        fun readC(inputStream: InputStream): List<Data.Book>{
             val read=inputStream.bufferedReader()
             val head=read.readLine()
             return read.lineSequence()
@@ -46,8 +44,20 @@ class Data {
                     Data.Book(book_id, room_id, client_id, book_date, book_status)
                 }.toList()
 
-        }*/
+        }
+        fun readCs(inputStream: InputStream): List<Data.Room> {
+            val read = inputStream.bufferedReader()
+            val head = read.readLine()
+            return read.lineSequence()
+                .filter { it.isNotBlank() }
+                .map {
+                    val (room_id, type, price, maximum_nights, country) = it.split(';', ignoreCase = false, limit = 5)
+                    Data.Room(room_id, type, price, maximum_nights, country)
+                }.toList()
+        }
+
+        }
 
     }
-}
+
 
