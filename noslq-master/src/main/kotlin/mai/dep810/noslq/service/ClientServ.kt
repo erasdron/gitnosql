@@ -1,9 +1,11 @@
 package mai.dep810.noslq.service
 
+import com.hazelcast.core.HazelcastInstance
 import mai.dep810.noslq.model.Documents
 import mai.dep810.noslq.model.Documents.Users
 import mai.dep810.noslq.rep.BookRepository
 import mai.dep810.noslq.rep.Clientrepository
+import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import javax.ws.rs.NotFoundException
@@ -15,8 +17,9 @@ interface  IntClientService{
     fun deleteById(user_id: String)
 
 }
-@Service
-class ClientServ(private val roomRepository: Clientrepository) : IntClientService {
+@Service("clientService")
+class ClientServ(
+    private val roomRepository: Clientrepository) : IntClientService {
 
 
         override fun findAll(): List<Users> {
