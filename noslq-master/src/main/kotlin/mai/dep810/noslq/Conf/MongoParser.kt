@@ -23,7 +23,7 @@ fun inp(mongoClient: MongoClient) {
 
     val usersMigrations = migrations.find(Filters.eq("file", usersFile))
 
-    if(!usersMigrations.any()) {
+    if (!usersMigrations.any()) {
         mongoClient
             .getDatabase(databaseName)
             .getCollection("users")
@@ -44,9 +44,7 @@ fun inp(mongoClient: MongoClient) {
             )
         )
     }
-
 }
-
 fun inpstr(mongoClient: MongoClient) {
     val booksStream = {}.javaClass.classLoader.getResourceAsStream(booksFile)
     val books = Data.readC(booksStream)
@@ -91,7 +89,7 @@ fun inpstrn(mongoClient: MongoClient) {
 
     val roomsMigrations = migrations.find(Filters.eq("file", roomsFile))
 
-    if(!roomsMigrations.any()) {
+    if (!roomsMigrations.any()) {
         mongoClient
             .getDatabase(databaseName)
             .getCollection("room")
@@ -100,9 +98,9 @@ fun inpstrn(mongoClient: MongoClient) {
                     val documentMr = mapOf(
                         "room_id" to it.room_id,
                         "country" to it.type,
-                        "type" to it.maximum_nights,
+                        "price" to it.maximum_nights,
                         "maximum_nights" to it.price,
-                        "price" to it.country
+                        "type" to it.country
                     )
                     InsertOneModel(Document(documentMr))
                 })
@@ -116,3 +114,4 @@ fun inpstrn(mongoClient: MongoClient) {
         )
     }
 }
+

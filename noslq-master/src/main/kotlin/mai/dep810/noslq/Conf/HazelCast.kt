@@ -16,5 +16,8 @@ class HazelCast {
     @Bean("hazelcastConf")
     fun hazelcastConfig(): Config =
         Config("rooms")
+    fun hazelcastConf(): Config=
+        Config("users")
+
 
 }
