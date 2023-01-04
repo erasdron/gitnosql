@@ -6,12 +6,5 @@ import org.springframework.stereotype.Repository
 import org.springframework.web.bind.annotation.GetMapping
 
 @Repository("bookrepository")
-
-public interface BookRepository : MongoRepository<Books, String> {
-
-    companion object{
-    fun findById(id: String): Books {
-        return findById(id)
-    }
-    }
+interface BookRepository : MongoRepository<Books, String> {
 }

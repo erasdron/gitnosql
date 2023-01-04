@@ -12,7 +12,7 @@ class BookController(val bookrepository: BookServ) {
     fun find(): List<Documents.Books> =bookrepository.findAll();
 
     @GetMapping("/{id}")
-    fun findBookingsId (@PathVariable id:String): Documents.Books =bookrepository.findById(id);
+    fun findBookingsId (@PathVariable id:String): String? =bookrepository.findBookById(id);
 
 //    @PostMapping
 //    fun addBookings(@RequestBody book: Book) = bookrepository.addBook(book);
